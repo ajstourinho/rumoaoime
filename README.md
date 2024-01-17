@@ -1,10 +1,14 @@
 # Rumo ao IME
 
+
 ## Summary
 
 - [Development Environment](#development-environment)
 
+
 ## Development Environment
+
+### Building and running the containers
 
 To build the containers via the ```docker-compose.dev.yml``` file, use the command:
 
@@ -20,9 +24,32 @@ docker-compose -f docker-compose.dev.yml up
 
 > This Development Environment allows for hot reloading on the frontend.
 
+### Installing new React dependencies
+
+First, build and let the frontend container run with the previous steps.
+
+After that, manually execute the installation of the dependency inside the frontend container with the command:
 
 
+```
+docker exec -it <container_name_or_id> npm install <name_of_dependence>
+```
 
+> Note that it will be needed the name or id of the container, which can be consulted with the command ```docker ps```
+
+Now, ```package.json``` and ```package-lock.json``` got updated inside the container, but not in the host.
+To reflect these changes to the local files, manually copy them both from the container back to the host with these commands:
+
+```
+docker cp <container_name_or_id>:/usr/src/app/package.json ./frontend/package.json
+
+```
+
+```
+docker cp <container_name_or_id>:/usr/src/app/package-lock.json ./frontend/package-lock.json
+```
+
+Finally, stop the running container and rebuild it.
 
 
 
