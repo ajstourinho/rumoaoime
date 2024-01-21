@@ -1,5 +1,14 @@
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
+import HomeIcon from '@mui/icons-material/Home';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import ScienceIcon from '@mui/icons-material/Science';
+import AbcIcon from '@mui/icons-material/Abc';
+import LanguageIcon from '@mui/icons-material/Language';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import RuleIcon from '@mui/icons-material/Rule';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
 const sections = [
     {
@@ -7,7 +16,7 @@ const sections = [
         pages: [
             {
                 name: "Meu progresso",
-                icon: <InboxIcon />
+                icon: <HomeIcon />
             },
         ]
     },
@@ -16,27 +25,27 @@ const sections = [
         pages: [
             {
                 name: "Matemática",
-                icon: <InboxIcon />
+                icon: <CalculateIcon />
             },
             {
                 name: "Física",
-                icon: <DraftsIcon />
+                icon: <PsychologyIcon />
             },
             {
                 name: "Química",
-                icon: <DraftsIcon />
+                icon: <ScienceIcon />
             },
             {
                 name: "Português",
-                icon: <DraftsIcon />
+                icon: <AbcIcon />
             },
             {
                 name: "Inglês",
-                icon: <DraftsIcon />
+                icon: <LanguageIcon />
             },
             {
                 name: "Redação",
-                icon: <DraftsIcon />
+                icon: <DriveFileRenameOutlineIcon />
             },
         ]
     },
@@ -45,11 +54,11 @@ const sections = [
         pages: [
             {
                 name: "Objetivas",
-                icon: <InboxIcon />
+                icon: <RuleIcon />
             },
             {
                 name: "Discursivas",
-                icon: <DraftsIcon />
+                icon: <EditNoteIcon />
             },
         ]
     },
@@ -58,11 +67,11 @@ const sections = [
         pages: [
             {
                 name: "Objetivos",
-                icon: <InboxIcon />
+                icon: <AssignmentTurnedInIcon />
             },
             {
                 name: "Discursivos",
-                icon: <DraftsIcon />
+                icon: <AssignmentIcon />
             },
         ]
     },
