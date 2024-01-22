@@ -8,3 +8,19 @@ services:
       - /usr/src/app/node_modules # Anonymous Volume for node_modules
     ports:
       - "3000:3000"
+    networks:
+      - my-network
+  database:
+    image: mongo
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
+volumes:
+  mongo-data:
