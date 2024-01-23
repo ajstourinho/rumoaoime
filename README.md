@@ -37,30 +37,7 @@ docker exec -it <container_name_or_id> npm install <name_of_dependence>
 
 > Note that it will be needed the name or id of the container, which can be consulted with the command ```docker ps```
 
-Now, ```package.json``` and ```package-lock.json``` got updated inside the container, but not in the host.
-To reflect these changes to the local files, manually copy them both from the container back to the host with these commands:
-
-```
-docker cp <container_name_or_id>:/usr/src/app/package.json ./frontend/package.json
-
-```
-
-```
-docker cp <container_name_or_id>:/usr/src/app/package-lock.json ./frontend/package-lock.json
-```
-
-Finally, stop the running container and rebuild it.
-
-
-
-
-# Create a network
-
-Create a Docker network to facilitate communication between your MongoDB container and your Flask/React application containers:
-
-```
-docker network create my-network
-```
+> Also note that, by the volumes configuration in the `docker-compose` file, the ```package.json``` and ```package-lock.json``` got updated inside the container and in the host.
 
 
 # Run MongoDB Container
