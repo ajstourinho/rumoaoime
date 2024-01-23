@@ -56,7 +56,7 @@ const UserMenu = ({ username }) => {
         </MenuItem>
         <MenuItem>
           <ExitToAppIcon style={{marginRight: "10px"}}/>
-          Log Out
+          Sair
         </MenuItem>
       </Menu>
     </div>
