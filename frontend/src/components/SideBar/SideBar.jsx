@@ -24,8 +24,8 @@ const Sidebar = () => {
     <div style={sidebarStyle}>
       <List>
         {
-          sections.map((section) =>
-            <>
+          sections.map((section, idx) =>
+            <React.Fragment key={idx}>
               <ListItem style={{ marginBottom: '2px' }}>
                 <Typography variant="caption">
                   {section.name}
@@ -33,8 +33,8 @@ const Sidebar = () => {
               </ListItem>
 
               {
-                section.pages.map((page) =>                 
-                  <ListItem button style={{ height: "40px"}}>
+                section.pages.map((page, idx) =>                 
+                  <ListItem button style={{ height: "40px"}} key={idx}>
                     <ListItemIcon>
                       {page.icon}
                     </ListItemIcon>
@@ -44,7 +44,7 @@ const Sidebar = () => {
               }
               
               <Divider style={{ marginBottom: "10px", marginTop: "10px"}}/>
-            </>
+            </React.Fragment>
           )
         }
       </List>
