@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   frontend:
+    container_name: rumoaoime-frontend
     build: ./frontend
     volumes:
       - ./frontend:/usr/src/app # Bind-Mount mapping (for hot reload)
@@ -9,18 +10,19 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - my-network
+      - rumoaoime-network
   database:
+    container_name: rumoaoime-database
     image: mongo
     volumes:
       - mongo-data:/data/db
     ports:
       - "27017:27017"
     networks:
-      - my-network
+      - rumoaoime-network
 
 networks:
-  my-network:
+  rumoaoime-network:
 
 volumes:
   mongo-data:
