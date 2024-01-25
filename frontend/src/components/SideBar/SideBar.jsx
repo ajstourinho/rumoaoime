@@ -10,7 +10,6 @@ import sections from './sections';
 
 const sidebarStyle = {
   position: 'fixed',
-  top: '64px', // Adjust this value to match your topbar's height
   backgroundColor: 'white',
   width: '240px', // Adjust the width as needed
   height: 'calc(100vh - 64px)', // Calculate the remaining height
