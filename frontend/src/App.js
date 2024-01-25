@@ -7,6 +7,8 @@ import TopBar from './components/TopBar/TopBar';
 import SideBar from './components/SideBar/SideBar';
 import Footer from './components/Footer/Footer';
 
+import MyComponent from "./pages/TesteAxios";
+
 function App() {
   // const html_test = `
   //   Seja \\( S = \\left(1+\\operatorname{tg}(\\alpha)+\\sec(\\alpha)\\right)\\left(1+\\operatorname{cotg}(\\alpha)-\\operatorname{cossec}(\\alpha)\\right) \\).
@@ -14,17 +16,26 @@ function App() {
   // `
 
   return (
-    <div>
-      <TopBar />
+    <>
       <Grid container>
-        <Grid item xs={3}>
-          <SideBar />
+        <Grid item xs={12}>
+          <TopBar />
         </Grid>
-        <Grid item xs={9}>
-          {/* Main content goes here */}
+
+        <Grid container>
+          <Grid item sx={{mt: "64px", width: "240px"}}>
+            <SideBar />
+          </Grid>
+
+          <Grid item sx={{ mt: '64px', p: "30px"}} xs>
+            <MyComponent />
+          </Grid>
         </Grid>
+
       </Grid>
+        
       <Footer />
+      
       {/* <MathJax.Provider
         url="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML-full"
         options={{ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true },TeX: { extensions: ["mhchem.js"] } }}
@@ -42,7 +53,7 @@ function App() {
         </Typography>
 
       </MathJax.Provider> */}
-    </div>
+    </>
   );
 }
 
