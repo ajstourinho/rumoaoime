@@ -20,6 +20,15 @@ services:
       - "27017:27017"
     networks:
       - rumoaoime-network
+  backend:
+    container_name: rumoaoime-backend
+    build: ./backend
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - "5000:5000"
+    networks:
+      - rumoaoime-network
 
 networks:
   rumoaoime-network:
