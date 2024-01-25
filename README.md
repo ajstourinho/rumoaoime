@@ -1,9 +1,15 @@
-# Rumo ao IME
+# RumoAoIME
 
+## Description
 
-## Summary
+RumoAoIME is a complete website to help students prepare for the challenging entrance exams of the brazilian [Military Institute of Enginnering (IME)](https://www.ime.eb.mil.br/en/).
+
+## Table of Contents
 
 - [Development Environment](#development-environment)
+    - [Building and running the containers](#building-and-running-the-containers)
+    - [Installing new React dependencies](#installing-new-react-dependencies)
+    - [Accessing MongoDB](#accessing-mongodb)
 
 
 ## Development Environment
@@ -37,42 +43,15 @@ docker exec -it <container_name_or_id> npm install <name_of_dependence>
 
 > Note that it will be needed the name or id of the container, which can be consulted with the command ```docker ps```
 
-> Also note that, by the volumes configuration in the `docker-compose` file, the ```package.json``` and ```package-lock.json``` got updated inside the container and in the host.
+> Also note that, by the volumes configuration in the `docker-compose` file, the ```package.json``` and ```package-lock.json``` got updated inside the container as well as in the host.
 
-
-# Run MongoDB Container
-
-Start a MongoDB container and connect it to the network you created. You'll also want to configure volume storage to persist your database:
-
-```
-docker run --name my-mongo -d -v my-mongo-volume:/data/db --network my-network mongo
-
-```
-
-*   `--name my-mongo`: Names your container as `my-mongo`.
-*   `-d`: Runs the container in detached mode.
-*   `-v my-mongo-volume:/data/db`: Mounts a volume named `my-mongo-volume` at `/data/db` in the container for data persistence.
-*   `--network my-network`: Connects the container to `my-network`.
-
-# Run Flask and React Containers
-When running your Flask and React containers, ensure they're also connected to the same Docker network:
-
-```
-docker run --name my-flask-app -d --network my-network my-flask-image
-docker run --name my-react-app -d --network my-network -p 3000:3000 my-react-image
-```
-> To make it work, it is possible to omit the `my-react-image` part.
-
-*   `--network my-network` ensures these containers can communicate with the MongoDB container.
-*   `-p 3000:3000` for React exposes port 3000 on your host, mapping it to port 3000 in the container (adjust as necessary for your setup).
-
-# Data Persistence
-
-The volume `my-mongo-volume` will store your MongoDB data. Even if the container stops or is removed, the data will persist. To manage this data, you can use Docker volume commands.
-
-# Accessing MongoDB
+### Accessing MongoDB
 
 For development purposes, you might want to access MongoDB directly:
 
-*   **MongoDB Shell**: Run `docker exec -it my-mongo mongo` to access the MongoDB shell within the container.
+*   **MongoDB Shell**: Run `docker exec -it <mongo-container-name> mongosh` to access the MongoDB shell within the container.
 *   **GUI Tools**: Connect GUI tools like MongoDB Compass to `localhost:27017` for local development.
+
+> MongoDB Compass can be installed (on the [MongoDB official site](https://www.mongodb.com/try/download/shell)) and used in the host, as the ```docker-compose``` file maps the ```27017``` ports of the container and the host to reflect changes.
+
+> It is important to note that the ```mongo-data``` volume defined in the ```docker-compose``` is the one that stores and persists the MongoDB data (even if the container stops or is removed).
