@@ -4,11 +4,17 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/slices/userSlice';
+
 import UserMenu from "../UserMenu/UserMenu";
+import LogInButton from "../LogInButton/LogInButton";
 
 import logoImage from '../../assets/images/logo/logo.png';
 
 const TopBar = () => {
+  const { isLoggedIn } = useSelector(selectUser)
+
   return (
     <AppBar
       position="fixed"
@@ -25,7 +31,12 @@ const TopBar = () => {
           Sobre o site
         </Typography>
 
-        <UserMenu username="Alexandre" />
+        {
+          isLoggedIn ?
+          <UserMenu username="Alexandre" />
+          :
+          <LogInButton />
+        }
       
       </Toolbar>
     </AppBar>
