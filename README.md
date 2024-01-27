@@ -28,7 +28,7 @@ After building, you can start and run the containers with the command:
 docker-compose -f docker-compose.dev.yml up
 ```
 
-> This Development Environment allows for hot reloading on the frontend.
+> This Development Environment allows for hot reloading on the frontend and backend.
 
 ### Installing new React dependencies
 
@@ -47,7 +47,7 @@ docker exec -it <container_name_or_id> npm install <name_of_dependence>
 
 ### Accessing MongoDB
 
-For development purposes, you might want to access MongoDB directly:
+The two ways of accessing MongoDB directly are the following:
 
 *   **MongoDB Shell**: Run `docker exec -it <mongo-container-name> mongosh` to access the MongoDB shell within the container.
 *   **GUI Tools**: Connect GUI tools like MongoDB Compass to `localhost:27017` for local development.
@@ -55,3 +55,9 @@ For development purposes, you might want to access MongoDB directly:
 > MongoDB Compass can be installed (on the [MongoDB official site](https://www.mongodb.com/try/download/shell)) and used in the host, as the ```docker-compose``` file maps the ```27017``` ports of the container and the host to reflect changes.
 
 > It is important to note that the ```mongo-data``` volume defined in the ```docker-compose``` is the one that stores and persists the MongoDB data (even if the container stops or is removed).
+
+### Configuring Google OAuth
+
+The Google Authentication configuration is done by following [this video](https://www.youtube.com/watch?v=SwCA0K3gy90&list=LL&index=14&ab_channel=FelipeRocha%E2%80%A2dicasparadevs).
+
+> This video does not work entirely (because of deprecated libraries), but [this stackoverflow post](https://stackoverflow.com/questions/72172877/having-a-trouble-with-google-oauth2-app-has-no-backend-so-client-side-only/72392924#72392924) solves the errors with [this library (gapi-script)](https://www.npmjs.com/package/gapi-script).
