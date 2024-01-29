@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
 
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
-
-// Import for custom button
+// Imports for custom button
 import { useGoogleLogin } from '@react-oauth/google';
+import GoogleIcon from '@mui/icons-material/Google';
 // Get data from access_token
 import axios from "axios";
+
+import { useDispatch } from "react-redux";
+import { logInUser } from "../../store/slices/userSlice";
 
 const LogInButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,10 +31,10 @@ const LogInButton = () => {
     marginLeft: 'auto',
   };
 
+  const dispatch = useDispatch();
 
   // Login for custom button
   const login = useGoogleLogin({
-    // onSuccess: tokenResponse => console.log(tokenResponse), // Line of code for default button
     onSuccess: async (response) => {
       try {
         const res = await axios.get(
@@ -42,7 +45,14 @@ const LogInButton = () => {
             }
           }
         );
-        console.log(res);
+
+        const userData = {
+          username: res.data.name,
+          email: res.data.email,
+          pictureUrl: res.data.picture,
+        }
+
+        dispatch(logInUser(userData))
       } catch (err) {
         console.log(err);
       }
@@ -70,24 +80,13 @@ const LogInButton = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem>
-
-          <GoogleLogin
-            onSuccess={credentialResponse => {
-              const credentialResponseDecoded = jwtDecode(credentialResponse.credential)
-              console.log(credentialResponseDecoded);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          />
-
-        </MenuItem>
         
-        <MenuItem>
-          {/* Custom button */}
-          <Button onClick={() => login()}>Sign in with Google 🚀</Button>
-        </MenuItem>
+        <MenuItem onClick={login}>
+          <ListItemIcon>
+            <GoogleIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Entrar com o Google</ListItemText>
+        </MenuItem>      
       
       </Menu>
     </div>
