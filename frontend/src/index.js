@@ -13,12 +13,19 @@ import App from './App';
 import { store } from './store/store'
 import { Provider } from 'react-redux'
 
+import MathJax from "mathjax3-react";
+
 const root = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>,
+    <MathJax.Provider
+      url="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML-full"
+      options={{ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true },TeX: { extensions: ["mhchem.js"] } }}
+    >
+      <Provider store={store}>
+        <App />
+      </Provider>,
+    </MathJax.Provider>
   </React.StrictMode>,
   root
 )
