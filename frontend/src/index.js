@@ -15,17 +15,21 @@ import { Provider } from 'react-redux'
 
 import MathJax from "mathjax3-react";
 
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 const root = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
-    <MathJax.Provider
-      url="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML-full"
-      options={{ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true },TeX: { extensions: ["mhchem.js"] } }}
-    >
-      <Provider store={store}>
-        <App />
-      </Provider>,
-    </MathJax.Provider>
+    <GoogleOAuthProvider clientId="816971905092-mflohce7sbvtui2tffm5s1dmmssnns6c.apps.googleusercontent.com">
+      <MathJax.Provider
+        url="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML-full"
+        options={{ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true },TeX: { extensions: ["mhchem.js"] } }}
+      >
+        <Provider store={store}>
+          <App />
+        </Provider>,
+      </MathJax.Provider>
+    </GoogleOAuthProvider>
   </React.StrictMode>,
   root
 )
