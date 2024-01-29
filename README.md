@@ -55,3 +55,10 @@ For development purposes, you might want to access MongoDB directly:
 > MongoDB Compass can be installed (on the [MongoDB official site](https://www.mongodb.com/try/download/shell)) and used in the host, as the ```docker-compose``` file maps the ```27017``` ports of the container and the host to reflect changes.
 
 > It is important to note that the ```mongo-data``` volume defined in the ```docker-compose``` is the one that stores and persists the MongoDB data (even if the container stops or is removed).
+
+### Google OAuth
+
+The Google OAuth was implemented following [this video](https://www.youtube.com/watch?v=UUJfTsn6S_Y&ab_channel=CodeWithMasood).
+The part about getting data from access_token it is not yet implemented.
+An important part of this configuration was setting Credentials in the [Google Cloud Console](https://console.cloud.google.com/).
+However, at first, the Credentials was set for Testing, requiring a verification process when changed to Production.
