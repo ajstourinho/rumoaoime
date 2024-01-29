@@ -2,7 +2,7 @@
 
 ## Description
 
-RumoAoIME is a complete website to help students prepare for the challenging entrance exams of the brazilian [Military Institute of Enginnering (IME)](https://www.ime.eb.mil.br/en/).
+RumoAoIME is a complete website to help students prepare for the challenging entrance exams of the brazilian [Military Institute of Engineering (IME)](https://www.ime.eb.mil.br/en/).
 
 ## Table of Contents
 
