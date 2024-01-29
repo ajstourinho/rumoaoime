@@ -7,6 +7,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Typography from '@mui/material/Typography';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/slices/userSlice';
 
 const UserMenu = ({ username }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,6 +29,8 @@ const UserMenu = ({ username }) => {
     marginLeft: 'auto', // Move to the right
   };
 
+  const userData = useSelector(selectUser);
+
   return (
     <div style={userMenuStyle}>
       <IconButton
@@ -39,8 +45,13 @@ const UserMenu = ({ username }) => {
         }}
         disableRipple
       >
-        <Avatar style={{ width: '30px', height: '30px', marginRight: '8px' }}>{username.charAt(0)}</Avatar>
-        <Typography variant="subtitle1">{username}</Typography>
+        {/* <Avatar style={{ width: '30px', height: '30px', marginRight: '8px' }}>{userData.username}</Avatar> */}
+        <Avatar
+          alt="Account Image"
+          src={userData.pictureUrl}
+          style={{ width: '30px', height: '30px', marginRight: '8px' }}
+        />
+        <Typography variant="body2">{userData.username}</Typography>
         <ExpandMoreIcon />
       </IconButton>
 
@@ -49,15 +60,19 @@ const UserMenu = ({ username }) => {
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
       >
-        <MenuItem>
-          <SettingsIcon style={{marginRight: "10px"}}/>
-          Gerenciar conta
-        </MenuItem>
-        <MenuItem>
-          <ExitToAppIcon style={{marginRight: "10px"}}/>
-          Sair
-        </MenuItem>
+        <MenuItem
+          sx={{ width: "200px"}}
+        >
+          <ListItemIcon>
+            <ExitToAppIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Sair</ListItemText>
+        </MenuItem>   
       </Menu>
     </div>
   );
