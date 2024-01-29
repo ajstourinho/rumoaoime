@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+const initialBlankState = {
   isLoggedIn: false,
   username: "",
   email: "",
@@ -9,20 +9,30 @@ const initialState = {
 
 export const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: initialBlankState,
   reducers: {
     logInUser: (state, { payload }) => {
-        return {
-          isLoggedIn: true,
-          username: payload.username,
-          email: payload.email,
-          pictureUrl: payload.pictureUrl,
-        }
+
+      const userSessionData = {
+        isLoggedIn: true,
+        username: payload.username,
+        email: payload.email,
+        pictureUrl: payload.pictureUrl,
+      }
+      
+      localStorage.setItem('userSessionData', JSON.stringify(userSessionData))
+
+      return userSessionData
     },
+    logOutUser: (state) => {
+      localStorage.removeItem('userSessionData')
+
+      return initialBlankState
+    }
   },
 })
 
-export const { logInUser } = userSlice.actions
+export const { logInUser, logOutUser } = userSlice.actions
 
 export const selectUser = (state) => state.user
 
