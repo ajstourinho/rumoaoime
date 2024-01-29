@@ -9,6 +9,9 @@ import Footer from './components/Footer/Footer';
 
 import MyComponent from "./pages/TesteAxios";
 
+import MarkdownMathJaxRenderer from "./components/MarkdownMathJaxRenderer/MarkdownMathJaxRenderer";
+import exampleMd from "./assets/markdowns/1.md" 
+
 function App() {
   // const html_test = `
   //   Seja \\( S = \\left(1+\\operatorname{tg}(\\alpha)+\\sec(\\alpha)\\right)\\left(1+\\operatorname{cotg}(\\alpha)-\\operatorname{cossec}(\\alpha)\\right) \\).
@@ -29,6 +32,7 @@ function App() {
 
           <Grid item sx={{ mt: '64px', p: "30px"}} xs>
             <MyComponent />
+            <MarkdownMathJaxRenderer contentPath={exampleMd}/>
           </Grid>
         </Grid>
 
