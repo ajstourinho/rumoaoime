@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import SettingsIcon from '@mui/icons-material/Settings';
 import Button from '@mui/material/Button';
-// import GoogleLogin from "react-google-login"
-// import { gapi } from 'gapi-script';
+
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
+
+// Import for custom button
+import { useGoogleLogin } from '@react-oauth/google';
+// Get data from access_token
+import axios from "axios";
 
 const LogInButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -20,23 +25,29 @@ const LogInButton = () => {
   const logInMenuStyle = {
     display: 'flex',
     alignItems: 'center',
-    marginLeft: 'auto', // Move to the right
+    marginLeft: 'auto',
   };
 
-//   const responseGoogle = (response) => {
-//     console.log(response);
-//   }
 
-//     useEffect(() => {
-//     function start() {
-//       gapi.client.init({
-//         clientId: "816971905092-8q3a80l1vd05aa939o969auac2d9f21m.apps.googleusercontent.com",
-//         scope: 'email',
-//       });
-//     }
-
-//     gapi.load('client:auth2', start);
-//   }, []);
+  // Login for custom button
+  const login = useGoogleLogin({
+    // onSuccess: tokenResponse => console.log(tokenResponse), // Line of code for default button
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`
+            }
+          }
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  });
 
   return (
     <div style={logInMenuStyle}>
@@ -60,16 +71,24 @@ const LogInButton = () => {
         onClose={handleClose}
       >
         <MenuItem>
-          <SettingsIcon style={{marginRight: "10px"}}/>
-          Entrar com Google
-          {/* <GoogleLogin
-            clientId="816971905092-8q3a80l1vd05aa939o969auac2d9f21m.apps.googleusercontent.com"
-            buttonText="Entre com Google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-          /> */}
-        </MenuItem>
 
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              const credentialResponseDecoded = jwtDecode(credentialResponse.credential)
+              console.log(credentialResponseDecoded);
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
+
+        </MenuItem>
+        
+        <MenuItem>
+          {/* Custom button */}
+          <Button onClick={() => login()}>Sign in with Google 🚀</Button>
+        </MenuItem>
+      
       </Menu>
     </div>
   );
