@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../store/slices/userSlice';
 import { logOutUser } from '../../store/slices/userSlice';
 
-const UserMenu = ({ username }) => {
+const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {

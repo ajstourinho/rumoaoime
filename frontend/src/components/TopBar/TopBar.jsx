@@ -33,7 +33,7 @@ const TopBar = () => {
 
         {
           isLoggedIn ?
-          <UserMenu username="Alexandre" />
+          <UserMenu/>
           :
           <LogInButton />
         }
