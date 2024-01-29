@@ -14,7 +14,7 @@ const MarkdownMathJaxRenderer = ({ contentPath }) => {
         setMarkdownHtml(html);
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [contentPath]);
 
   return (
     <>
