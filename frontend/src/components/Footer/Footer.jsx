@@ -13,6 +13,7 @@ const footerStyle = {
   right: 0,
   width: '100%',
   borderTop: '2px solid #ccc', // Add an upper border
+  height: "20px"
 };
 
 const Footer = () => {
