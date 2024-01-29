@@ -11,8 +11,8 @@ import MyComponent from "./pages/TesteAxios";
 
 import MarkdownMathJaxRenderer from "./components/MarkdownMathJaxRenderer/MarkdownMathJaxRenderer";
 import exampleMd from "./assets/markdowns/1.md" 
-import { useDispatch, useSelector } from "react-redux";
-import { logInUser, selectUser } from "./store/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { logInUser } from "./store/slices/userSlice";
 import { useEffect } from "react";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
       const userSessionData = JSON.parse(localStorage.getItem('userSessionData'))
       dispatch(logInUser(userSessionData))
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <>
