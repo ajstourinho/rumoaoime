@@ -23,11 +23,11 @@ const TopBar = () => {
       <Toolbar style={{ height: '64px', borderBottom: '2px solid #ccc', color: "grey"}}>
         <img src={logoImage} alt="Logo" style={{ height: '40px', marginRight: '16px' }} />
 
-        <Typography variant="caption" style={{ marginLeft: '30px', cursor: 'pointer'}}>
+        <Typography variant="body2" style={{ marginLeft: '30px', cursor: 'pointer'}}>
           Sobre o IME
         </Typography>
         
-        <Typography variant="caption" style={{ marginLeft: '30px', cursor: 'pointer' }}>
+        <Typography variant="body2" style={{ marginLeft: '30px', cursor: 'pointer' }}>
           Sobre o site
         </Typography>
 
