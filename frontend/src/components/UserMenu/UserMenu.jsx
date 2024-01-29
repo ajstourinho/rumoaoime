@@ -4,13 +4,13 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../store/slices/userSlice';
+import { logOutUser } from '../../store/slices/userSlice';
 
 const UserMenu = ({ username }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,10 +26,16 @@ const UserMenu = ({ username }) => {
   const userMenuStyle = {
     display: 'flex',
     alignItems: 'center',
-    marginLeft: 'auto', // Move to the right
+    marginLeft: 'auto',
   };
 
   const userData = useSelector(selectUser);
+
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(logOutUser())
+  }
 
   return (
     <div style={userMenuStyle}>
@@ -45,7 +51,6 @@ const UserMenu = ({ username }) => {
         }}
         disableRipple
       >
-        {/* <Avatar style={{ width: '30px', height: '30px', marginRight: '8px' }}>{userData.username}</Avatar> */}
         <Avatar
           alt="Account Image"
           src={userData.pictureUrl}
@@ -67,6 +72,7 @@ const UserMenu = ({ username }) => {
       >
         <MenuItem
           sx={{ width: "200px"}}
+          onClick={logout}
         >
           <ListItemIcon>
             <ExitToAppIcon fontSize="small" />
