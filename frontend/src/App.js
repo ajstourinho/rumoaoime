@@ -30,7 +30,7 @@ function App() {
             <SideBar />
           </Grid>
 
-          <Grid item sx={{ mt: '64px', p: "30px"}} xs>
+        <Grid item sx={{ mt: '64px', mb: "42px",p: "30px", maxHeight: 'calc(100vh - 108px)', overflowY: 'auto' }} xs>
             <MyComponent />
             <MarkdownMathJaxRenderer contentPath={exampleMd}/>
           </Grid>
