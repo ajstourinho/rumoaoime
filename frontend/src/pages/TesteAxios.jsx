@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axiosInstance from '../axios/axiosInstance';
 
-function MyComponent() {
+function TesteAxios() {
     const [data, setData] = useState(null);
 
     const fetchData = () => {
@@ -38,4 +38,4 @@ function MyComponent() {
     );
 }
 
-export default MyComponent;
+export default TesteAxios;
