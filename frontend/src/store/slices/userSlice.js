@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialBlankState = {
+const blankState = {
   isLoggedIn: false,
   username: "",
   email: "",
   pictureUrl: ""
 }
 
+const localStorageUserSessionData = localStorage.getItem('userSessionData')
+
+const conditionalInitialState = (localStorageUserSessionData === null) ? blankState : JSON.parse(localStorageUserSessionData)
+
 export const userSlice = createSlice({
   name: 'user',
-  initialState: initialBlankState,
+  initialState: conditionalInitialState,
   reducers: {
     logInUser: (state, { payload }) => {
 
@@ -27,7 +31,7 @@ export const userSlice = createSlice({
     logOutUser: (state) => {
       localStorage.removeItem('userSessionData')
 
-      return initialBlankState
+      return blankState
     }
   },
 })
