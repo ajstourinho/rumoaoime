@@ -11,24 +11,12 @@ import MyComponent from "./pages/TesteAxios";
 
 import MarkdownMathJaxRenderer from "./components/MarkdownMathJaxRenderer/MarkdownMathJaxRenderer";
 import exampleMd from "./assets/markdowns/1.md" 
-import { useDispatch } from "react-redux";
-import { logInUser } from "./store/slices/userSlice";
-import { useEffect } from "react";
 
 function App() {
   // const html_test = `
   //   Seja \\( S = \\left(1+\\operatorname{tg}(\\alpha)+\\sec(\\alpha)\\right)\\left(1+\\operatorname{cotg}(\\alpha)-\\operatorname{cossec}(\\alpha)\\right) \\).
   //   Mostre que o valor de \\( S \\) é um número inteiro para todo valor do ângulo \\( \\alpha \\) diferente de \\( \\frac{k\\pi}{2} \\), com \\( k \\in \\mathbb{Z} \\) e calcule esse valor.
   // `
-  
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (localStorage.getItem('userSessionData') !== null) {
-      const userSessionData = JSON.parse(localStorage.getItem('userSessionData'))
-      dispatch(logInUser(userSessionData))
-    }
-  }, [dispatch])
 
   return (
     <>
