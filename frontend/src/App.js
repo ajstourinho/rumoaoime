@@ -20,7 +20,7 @@ function App() {
             <SideBar />
           </Grid>
 
-          <Grid item sx={{ mt: '64px', mb: "42px",p: "30px", maxHeight: 'calc(100vh - 108px)', overflowY: 'auto' }} xs>
+          <Grid item sx={{ mt: '64px', mb: "42px", px: "30px", maxHeight: 'calc(100vh - 108px)', overflowY: 'auto' }} xs>
             <Links />
           </Grid>
         </Grid>
