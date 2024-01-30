@@ -39,7 +39,7 @@ function LandingPage() {
           passar no <b>IME</b>
         </Typography>
         <Typography variant="h5" style={{ color: "#777", textAlign: "center"}}>
-          Provas anteriores, simulados, correções automáticas e muito
+          Provas anteriores, simulados, teoria, correções automáticas e muito
           mais.
         </Typography>
 
