@@ -17,6 +17,8 @@ import MathJax from "mathjax3-react";
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
+import { BrowserRouter } from 'react-router-dom';
+
 const root = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
@@ -26,7 +28,9 @@ ReactDOM.render(
         options={{ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true },TeX: { extensions: ["mhchem.js"] } }}
       >
         <Provider store={store}>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </Provider>,
       </MathJax.Provider>
     </GoogleOAuthProvider>
