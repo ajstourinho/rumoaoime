@@ -1,4 +1,4 @@
-import HomeIcon from '@mui/icons-material/Home';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import ScienceIcon from '@mui/icons-material/Science';
@@ -16,7 +16,7 @@ const sections = [
         pages: [
             {
                 name: "Meu progresso",
-                icon: <HomeIcon />
+                icon: <TimelineIcon />
             },
         ]
     },
