@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 
 import vectorBanner from "../assets/images/banner/vector-banner.png";
 import logo from "../assets/images/logo/logo.png";
 import LogInButton from "../components/LogInButton/LogInButton";
+import { useSelector } from "react-redux";
+import { selectUser } from "../store/slices/userSlice";
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
+
+  const { isLoggedIn } = useSelector(selectUser);
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/meu-progresso");
+    }
+  }, [isLoggedIn, navigate]);
+
   return (
     <Grid container spacing={2}>
       {/* Text and Logo */}
