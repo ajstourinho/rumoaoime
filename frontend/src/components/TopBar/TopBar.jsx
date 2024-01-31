@@ -44,12 +44,12 @@ const TopBar = () => {
           alt="Logo"
           style={{ height: "40px", marginRight: "16px", cursor: "pointer" }}
           onClick={() => navigate("/")}
-          
         />
 
         <Typography
           variant="body2"
           style={{ marginLeft: "30px", cursor: "pointer" }}
+          onClick={() => navigate("/sobre-o-ime")}
         >
           Sobre o IME
         </Typography>
@@ -57,6 +57,7 @@ const TopBar = () => {
         <Typography
           variant="body2"
           style={{ marginLeft: "30px", cursor: "pointer" }}
+          onClick={() => navigate("/sobre-o-site")}
         >
           Sobre o site
         </Typography>

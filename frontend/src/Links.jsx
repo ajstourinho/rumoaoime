@@ -17,6 +17,8 @@ import ProvasAnterioresObjetivas from './pages/provasAnteriores/ProvasAnteriores
 import ProvasAnterioresDiscursivas from './pages/provasAnteriores/ProvasAnterioresDiscursivas';
 import SimuladosObjetivos from './pages/simulados/SimuladosObjetivos';
 import SimuladosDiscursivos from './pages/simulados/SimuladosDiscursivos';
+import SobreOIME from './pages/SobreOIME';
+import SobreOSite from './pages/SobreOSite';
 
 function Links() {
 
@@ -33,6 +35,10 @@ function Links() {
         }
       />
 
+      {/* TopBar */}
+      <Route path="/sobre-o-ime/" element={<SobreOIME />} />
+      <Route path="/sobre-o-site/" element={<SobreOSite />} />
+      
       {/* Conteúdos */}
       <Route path="/conteudos/matematica" element={<Matematica />} />
       <Route path="/conteudos/fisica" element={<Fisica />} />
