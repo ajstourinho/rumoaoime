@@ -16,7 +16,9 @@ const sections = [
         pages: [
             {
                 name: "Meu progresso",
-                icon: <TimelineIcon />
+                icon: <TimelineIcon />,
+                navigateTo: "/meu-progresso",
+                selectedColor: "#26279B"
             },
         ]
     },
@@ -25,27 +27,39 @@ const sections = [
         pages: [
             {
                 name: "Matemática",
-                icon: <CalculateIcon />
+                icon: <CalculateIcon />,
+                navigateTo: "/conteudos/matematica",
+                selectedColor: "#7884CB"
             },
             {
                 name: "Física",
-                icon: <PsychologyIcon />
+                icon: <PsychologyIcon />,
+                navigateTo: "/conteudos/fisica",
+                selectedColor: "#CB9178"
             },
             {
                 name: "Química",
-                icon: <ScienceIcon />
+                icon: <ScienceIcon />,
+                navigateTo: "/conteudos/quimica",
+                selectedColor: "#B2C8AC"
             },
             {
                 name: "Português",
-                icon: <AbcIcon />
+                icon: <AbcIcon />,
+                navigateTo: "/conteudos/portugues",
+                selectedColor: "#D9D67D"
             },
             {
                 name: "Inglês",
-                icon: <LanguageIcon />
+                icon: <LanguageIcon />,
+                navigateTo: "/conteudos/ingles",
+                selectedColor: "#9D6C9B"
             },
             {
                 name: "Redação",
-                icon: <DriveFileRenameOutlineIcon />
+                icon: <DriveFileRenameOutlineIcon />,
+                navigateTo: "/conteudos/redacao",
+                selectedColor: "#607880"
             },
         ]
     },
@@ -54,11 +68,15 @@ const sections = [
         pages: [
             {
                 name: "Objetivas",
-                icon: <RuleIcon />
+                icon: <RuleIcon />,
+                navigateTo: "/provas-anteriores/objetivas",
+                selectedColor: "#456"
             },
             {
                 name: "Discursivas",
-                icon: <EditNoteIcon />
+                icon: <EditNoteIcon />,
+                navigateTo: "/provas-anteriores/discursivas",
+                selectedColor: "#456"
             },
         ]
     },
@@ -67,11 +85,15 @@ const sections = [
         pages: [
             {
                 name: "Objetivos",
-                icon: <AssignmentTurnedInIcon />
+                icon: <AssignmentTurnedInIcon />,
+                navigateTo: "/simulados/objetivos",
+                selectedColor: "#456"
             },
             {
                 name: "Discursivos",
-                icon: <AssignmentIcon />
+                icon: <AssignmentIcon />,
+                navigateTo: "/simulados/discursivos",
+                selectedColor: "#456"
             },
         ]
     },

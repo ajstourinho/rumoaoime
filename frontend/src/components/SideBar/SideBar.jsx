@@ -1,6 +1,6 @@
 import React from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import MuiListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
@@ -10,7 +10,22 @@ import Tooltip from '@mui/material/Tooltip';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../store/slices/userSlice';
 
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import sections from './sections';
+
+import { styled } from "@mui/material/styles";
+
+const ListItem = styled(MuiListItem)(({ selectedColor }) => ({
+  "&.Mui-selected, &.Mui-selected:hover": {
+    color: "white",
+    backgroundColor: selectedColor,
+    "& .MuiListItemIcon-root": {
+      // This targets a ListItemIcon child
+      color: "white", // Example color, adjust as needed
+    },
+  },
+}));
 
 const sidebarStyle = {
   position: 'fixed',
@@ -25,6 +40,11 @@ const sidebarStyle = {
 const Sidebar = () => {
   const { isLoggedIn } = useSelector(selectUser);
   
+  const navigate = useNavigate();
+
+  let location = useLocation();
+  console.log(location)
+
   return (
     <div style={sidebarStyle}>
       <List sx={{ marginBottom: "20px" }}>
@@ -55,6 +75,9 @@ const Sidebar = () => {
                         ? true
                         : false
                     }
+                    onClick={() => navigate(page.navigateTo)}
+                    selected={page.navigateTo === location.pathname}
+                    selectedColor={page.selectedColor}
                   >
                     <ListItemIcon>{page.icon}</ListItemIcon>
                     <ListItemText primary={page.name} />
