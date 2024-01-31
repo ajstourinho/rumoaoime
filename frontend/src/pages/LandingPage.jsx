@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Button, Box } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 
 import vectorBanner from "../assets/images/banner/vector-banner.png";
 import logo from "../assets/images/logo/logo.png";
