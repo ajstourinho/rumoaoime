@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../store/slices/userSlice';
 
+import { useNavigate } from "react-router-dom";
+
 import UserMenu from "../UserMenu/UserMenu";
 import LogInButton from "../LogInButton/LogInButton";
 
@@ -15,6 +17,8 @@ import logo from '../../assets/images/logo/logo.png';
 
 const TopBar = () => {
   const { isLoggedIn } = useSelector(selectUser)
+
+  const navigate = useNavigate();
 
   return (
     <AppBar
@@ -38,7 +42,9 @@ const TopBar = () => {
           component="img"
           src={logo}
           alt="Logo"
-          style={{ height: "40px", marginRight: "16px" }}
+          style={{ height: "40px", marginRight: "16px", cursor: "pointer" }}
+          onClick={() => navigate("/")}
+          
         />
 
         <Typography
