@@ -11,6 +11,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../store/slices/userSlice';
 import { logOutUser } from '../../store/slices/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,8 +34,11 @@ const UserMenu = () => {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate()
+  
   const logout = () => {
     dispatch(logOutUser())
+    navigate("/")
   }
 
   return (
