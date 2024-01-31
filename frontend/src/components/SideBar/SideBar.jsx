@@ -36,20 +36,24 @@ const Sidebar = () => {
 
             {section.pages.map((page, idx) => (
               <Tooltip
+                key={idx}
                 title={
-                  page.name === "Meu progresso" && !isLoggedIn ?
-                  "É preciso entrar com sua conta para ver o seu progresso."
-                  : false
+                  page.name === "Meu progresso" && !isLoggedIn
+                    ? "É preciso entrar com sua conta para ver o seu progresso."
+                    : false
                 }
-                arrow placement="right-start" style={{cursor: "pointer"}}
+                arrow
+                placement="right-start"
+                style={{ cursor: "pointer" }}
               >
                 <span>
                   <ListItem
                     button
                     style={{ height: "35px" }}
-                    key={idx}
                     disabled={
-                      page.name === "Meu progresso" && !isLoggedIn ? true : false
+                      page.name === "Meu progresso" && !isLoggedIn
+                        ? true
+                        : false
                     }
                   >
                     <ListItemIcon>{page.icon}</ListItemIcon>
