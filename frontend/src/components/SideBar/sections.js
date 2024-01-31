@@ -70,13 +70,13 @@ const sections = [
                 name: "Objetivas",
                 icon: <RuleIcon />,
                 navigateTo: "/provas-anteriores/objetivas",
-                selectedColor: "#777"
+                selectedColor: "#AAA"
             },
             {
                 name: "Discursivas",
                 icon: <EditNoteIcon />,
                 navigateTo: "/provas-anteriores/discursivas",
-                selectedColor: "#777"
+                selectedColor: "#AAA"
             },
         ]
     },
@@ -87,13 +87,13 @@ const sections = [
                 name: "Objetivos",
                 icon: <AssignmentTurnedInIcon />,
                 navigateTo: "/simulados/objetivos",
-                selectedColor: "#777"
+                selectedColor: "#AAA"
             },
             {
                 name: "Discursivos",
                 icon: <AssignmentIcon />,
                 navigateTo: "/simulados/discursivos",
-                selectedColor: "#777"
+                selectedColor: "#AAA"
             },
         ]
     },
