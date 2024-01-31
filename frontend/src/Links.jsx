@@ -13,6 +13,10 @@ import Quimica from './pages/conteudos/Quimica';
 import Portugues from './pages/conteudos/Portugues';
 import Ingles from './pages/conteudos/Ingles';
 import Redacao from './pages/conteudos/Redacao';
+import ProvasAnterioresObjetivas from './pages/provasAnteriores/ProvasAnterioresObjetivas';
+import ProvasAnterioresDiscursivas from './pages/provasAnteriores/ProvasAnterioresDiscursivas';
+import SimuladosObjetivos from './pages/simulados/SimuladosObjetivos';
+import SimuladosDiscursivos from './pages/simulados/SimuladosDiscursivos';
 
 function Links() {
 
@@ -36,6 +40,15 @@ function Links() {
       <Route path="/conteudos/portugues" element={<Portugues />} />
       <Route path="/conteudos/ingles" element={<Ingles />} />
       <Route path="/conteudos/redacao" element={<Redacao />} />
+
+      {/* Provas Anteriores */}
+      <Route path="/provas-anteriores/objetivas" element={<ProvasAnterioresObjetivas />} />
+      <Route path="/provas-anteriores/discursivas" element={<ProvasAnterioresDiscursivas />} />
+
+      {/* Simulados */}
+      <Route path="/simulados/objetivos" element={<SimuladosObjetivos />} />
+      <Route path="/simulados/discursivos" element={<SimuladosDiscursivos />} />
+
 
       {/* Testes */}
       <Route path="/axios" element={<TesteAxios />} />
