@@ -13,6 +13,7 @@ import axios from "axios";
 
 import { useDispatch } from "react-redux";
 import { logInUser } from "../../store/slices/userSlice";
+import { useNavigate } from 'react-router-dom';
 
 const LogInButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,6 +34,8 @@ const LogInButton = () => {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+  
   // Login for custom button
   const login = useGoogleLogin({
     onSuccess: async (response) => {
@@ -53,6 +56,8 @@ const LogInButton = () => {
         }
 
         dispatch(logInUser(userData))
+
+        navigate("/meu-progresso")
       } catch (err) {
         console.log(err);
       }
