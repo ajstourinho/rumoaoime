@@ -16,13 +16,13 @@ import sections from './sections';
 
 import { styled } from "@mui/material/styles";
 
-const ListItem = styled(MuiListItem)(({ selectedColor }) => ({
+const ListItem = styled(MuiListItem)(({ selectedcolor }) => ({
   "&.Mui-selected, &.Mui-selected:hover": {
     color: "white",
-    backgroundColor: selectedColor,
+    backgroundColor: selectedcolor,
     "& .MuiListItemIcon-root": {
       // This targets a ListItemIcon child
-      color: "white", // Example color, adjust as needed
+      color: "white",
     },
   },
 }));
@@ -43,7 +43,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   let location = useLocation();
-  console.log(location)
 
   return (
     <div style={sidebarStyle}>
@@ -77,7 +76,7 @@ const Sidebar = () => {
                     }
                     onClick={() => navigate(page.navigateTo)}
                     selected={page.navigateTo === location.pathname}
-                    selectedColor={page.selectedColor}
+                    selectedcolor={page.selectedColor}
                   >
                     <ListItemIcon>{page.icon}</ListItemIcon>
                     <ListItemText primary={page.name} />
