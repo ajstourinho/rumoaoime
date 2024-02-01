@@ -3,7 +3,13 @@ import { Typography, Box } from "@mui/material";
 
 const CustomUnderlineTypography = ({ children, underlineColor, variant }) => {
   return (
-    <Box sx={{ display: "inline-block", position: "relative" }}>
+    <Box
+      sx={{
+        display: "inline-block",
+        position: "relative",
+        mb: 5
+      }}
+    >
       <Typography variant={variant}>{children}</Typography>
       <Box
         sx={{
