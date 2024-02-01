@@ -1,24 +1,34 @@
-import React from 'react';
+import React from "react";
 
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../store/slices/userSlice';
+import { useSelector } from "react-redux";
+import { selectUser } from "../../store/slices/userSlice";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import UserMenu from "../UserMenu/UserMenu";
 import LogInButton from "../LogInButton/LogInButton";
 
-import logo from '../../assets/images/logo/logo.png';
+import logo from "../../assets/images/logo/logo.png";
 
 const TopBar = () => {
-  const { isLoggedIn } = useSelector(selectUser)
+  const { isLoggedIn } = useSelector(selectUser);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const pathCheck = (pathname) => {
+    if (location.pathname === pathname) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <AppBar
@@ -43,12 +53,18 @@ const TopBar = () => {
           src={logo}
           alt="Logo"
           style={{ height: "40px", marginRight: "16px", cursor: "pointer" }}
-          onClick={() => navigate("/")}
+          onClick={() =>
+            isLoggedIn ? navigate("/meu-progresso") : navigate("/")
+          }
         />
 
         <Typography
           variant="body2"
-          style={{ marginLeft: "30px", cursor: "pointer" }}
+          style={{
+            marginLeft: "30px",
+            cursor: "pointer",
+            color: pathCheck("/sobre-o-ime") ? "black" : "inherit",
+          }}
           onClick={() => navigate("/sobre-o-ime")}
         >
           Sobre o IME
@@ -56,7 +72,11 @@ const TopBar = () => {
 
         <Typography
           variant="body2"
-          style={{ marginLeft: "30px", cursor: "pointer" }}
+          style={{
+            marginLeft: "30px",
+            cursor: "pointer",
+            color: pathCheck("/sobre-o-site") ? "black" : "inherit",
+          }}
           onClick={() => navigate("/sobre-o-site")}
         >
           Sobre o site
