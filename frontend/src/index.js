@@ -2,6 +2,8 @@ import React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import "./styles/index.css"
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './styles/theme';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -29,7 +31,9 @@ ReactDOM.render(
       >
         <Provider store={store}>
           <BrowserRouter>
-            <App />
+            <ThemeProvider theme={theme}>
+              <App />
+            </ThemeProvider>
           </BrowserRouter>
         </Provider>,
       </MathJax.Provider>
