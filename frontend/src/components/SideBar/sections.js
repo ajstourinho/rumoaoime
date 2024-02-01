@@ -10,6 +10,8 @@ import RuleIcon from '@mui/icons-material/Rule';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
+import theme from '../../styles/theme';
+
 const sections = [
     {
         name: "",
@@ -18,7 +20,7 @@ const sections = [
                 name: "Meu progresso",
                 icon: <TimelineIcon />,
                 navigateTo: "/meu-progresso",
-                selectedColor: "#26279B"
+                selectedColor: theme.palette.rumoaoimeCustomColors.darkBlue
             },
         ]
     },
@@ -29,37 +31,37 @@ const sections = [
                 name: "Matemática",
                 icon: <CalculateIcon />,
                 navigateTo: "/conteudos/matematica",
-                selectedColor: "#7884CB"
+                selectedColor: theme.palette.rumoaoimeCustomColors.matematica
             },
             {
                 name: "Física",
                 icon: <PsychologyIcon />,
                 navigateTo: "/conteudos/fisica",
-                selectedColor: "#CB9178"
+                selectedColor: theme.palette.rumoaoimeCustomColors.fisica
             },
             {
                 name: "Química",
                 icon: <ScienceIcon />,
                 navigateTo: "/conteudos/quimica",
-                selectedColor: "#B2C8AC"
+                selectedColor: theme.palette.rumoaoimeCustomColors.quimica
             },
             {
                 name: "Português",
                 icon: <AbcIcon />,
                 navigateTo: "/conteudos/portugues",
-                selectedColor: "#D9D67D"
+                selectedColor: theme.palette.rumoaoimeCustomColors.portugues
             },
             {
                 name: "Inglês",
                 icon: <LanguageIcon />,
                 navigateTo: "/conteudos/ingles",
-                selectedColor: "#9D6C9B"
+                selectedColor: theme.palette.rumoaoimeCustomColors.ingles
             },
             {
                 name: "Redação",
                 icon: <DriveFileRenameOutlineIcon />,
                 navigateTo: "/conteudos/redacao",
-                selectedColor: "#607880"
+                selectedColor: theme.palette.rumoaoimeCustomColors.redacao
             },
         ]
     },
@@ -70,13 +72,13 @@ const sections = [
                 name: "Objetivas",
                 icon: <RuleIcon />,
                 navigateTo: "/provas-anteriores/objetivas",
-                selectedColor: "#AAA"
+                selectedColor: theme.palette.rumoaoimeCustomColors.lightGrey
             },
             {
                 name: "Discursivas",
                 icon: <EditNoteIcon />,
                 navigateTo: "/provas-anteriores/discursivas",
-                selectedColor: "#AAA"
+                selectedColor: theme.palette.rumoaoimeCustomColors.lightGrey
             },
         ]
     },
@@ -87,13 +89,13 @@ const sections = [
                 name: "Objetivos",
                 icon: <AssignmentTurnedInIcon />,
                 navigateTo: "/simulados/objetivos",
-                selectedColor: "#AAA"
+                selectedColor: theme.palette.rumoaoimeCustomColors.lightGrey
             },
             {
                 name: "Discursivos",
                 icon: <AssignmentIcon />,
                 navigateTo: "/simulados/discursivos",
-                selectedColor: "#AAA"
+                selectedColor: theme.palette.rumoaoimeCustomColors.lightGrey
             },
         ]
     },
