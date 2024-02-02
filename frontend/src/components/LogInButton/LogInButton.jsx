@@ -14,6 +14,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logInUser } from "../../store/slices/userSlice";
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../axios/axiosInstance';
 
 const LogInButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -54,6 +55,9 @@ const LogInButton = () => {
           email: res.data.email,
           pictureUrl: res.data.picture,
         }
+
+        axiosInstance.post("/login", userData)
+        .catch((err) => console.log(err))
 
         dispatch(logInUser(userData))
 
