@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure MongoDB URI (replace with your MongoDB URI)
-app.config['MONGO_URI'] = 'mongodb://rumoaoime-database:27017/database_teste'
+app.config['MONGO_URI'] = 'mongodb://rumoaoime-database:27017/database_rumoaoime'
 
 # Initialize PyMongo
 mongo = PyMongo(app)
@@ -14,6 +14,26 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
     return jsonify({"message": "Hello, world! This is the Flask backend."})
+
+@app.route('/login', methods=['POST'])
+def login():
+    user_data = request.json
+    email = user_data.get('email')  # Obtém o email do usuário a partir dos dados enviados
+
+    users = mongo.db.users  # 'users' é o nome da coleção MongoDB
+
+    # Verifica se já existe um usuário com esse email
+    existing_user = users.find_one({'email': email})
+
+    if existing_user:
+        # Se o usuário já existe, retorna uma mensagem indicando sucesso sem criar um novo
+        return jsonify({'message': 'User already exists. No new record created.'}), 200
+    else:
+        # Se o usuário não existe, insere um novo usuário
+        user_id = users.insert_one(user_data).inserted_id
+        print(f'User added with ID: {user_id}')
+        return jsonify({'message': 'New user created successfully'}), 201
+
 
 @app.route('/data', methods=['GET', 'POST'])
 def post_data():
@@ -26,7 +46,7 @@ def post_data():
         'username': 'john_doe',
         'email': 'john@example.com',
     }
-    users = mongo.db.collection_teste  # 'users' is the name of the MongoDB collection
+    users = mongo.db.users  # 'users' is the name of the MongoDB collection
     user_id = users.insert_one(user_data).inserted_id
     print(f'User added with ID: {user_id}')
     
