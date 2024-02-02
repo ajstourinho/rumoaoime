@@ -3,8 +3,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Stack, Box } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
+import Chip from "@mui/material/Chip";
 
-const ButtonCard = ({ circleColor, title, content }) => {
+const ButtonCard = ({ circleColor, title, subtitle, content, pathTo }) => {
+  const navigate = useNavigate();
+  
   return (
     <Card
       sx={{
@@ -19,9 +23,9 @@ const ButtonCard = ({ circleColor, title, content }) => {
         // mb: 4
       }}
     >
-      <CardActionArea>
+      <CardActionArea onClick={() => navigate(pathTo)}>
         <CardContent>
-          <Stack direction="row" alignItems="center" spacing={3} sx={{mb: 2}}>
+          <Stack direction="row" alignItems="center" spacing={3} sx={{ mb: 2 }}>
             <Box
               sx={{
                 bgcolor: circleColor,
@@ -30,10 +34,31 @@ const ButtonCard = ({ circleColor, title, content }) => {
                 borderRadius: "50%",
               }}
             />
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
+
+            <Stack
+              direction="row"
+              alignItems="center"
+              spacing={0.5}
+              sx={{ flexGrow: 1 }}
+            >
+              <Typography gutterBottom variant="h5" component="div">
+                {title}
+              </Typography>
+              <Typography
+                gutterBottom
+                variant="subtitle"
+                component="div"
+                sx={{ m: 0 }}
+              >
+                {subtitle}
+              </Typography>
+            </Stack>
+
+            <Chip label="Resolvida" size="small" color="primary"/>
+            <Chip label="Não resolvida" size="small" color="default"/>
+          
           </Stack>
+
           <Typography variant="body2" color="text.secondary">
             {content}
           </Typography>
