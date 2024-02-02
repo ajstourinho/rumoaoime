@@ -8,6 +8,16 @@ import Links from "./Links";
 
 function App() {
 
+  const contentGridStyle = {
+    position: 'fixed',
+    marginLeft: "242px",
+    marginTop: "64px",
+    width: 'calc(100vw - 242px)', // Adjust the width as needed
+    height: 'calc(100vh - 106px)', // Calculate the remaining height
+    overflowY: 'auto', // Enable vertical scrolling if necessary
+    padding: "30px"
+  };
+
   return (
     <>
       <Grid container>
@@ -20,7 +30,7 @@ function App() {
             <SideBar />
           </Grid>
 
-          <Grid item sx={{ mt: '64px', mb: "42px", p: "30px", maxHeight: 'calc(100vh - 108px)', overflowY: 'auto' }} xs>
+          <Grid item style={contentGridStyle}>
             <Links />
           </Grid>
         </Grid>
