@@ -1,18 +1,19 @@
 import React from "react";
 import { useTheme } from "@mui/material";
-import CustomUnderlineTypography from "../components/CustomUnderlineTypography/CustomUnderlineTypography";
+import PageTemplate from './PageTemplate';
 
 const MeuProgresso = () => {
   const theme = useTheme();
 
   return (
     <>
-      <CustomUnderlineTypography
-        variant="h4"
+      <PageTemplate
+        pageTitle="Meu Progresso"
         underlineColor={theme.palette.rumoaoimeCustomColors.darkBlue}
       >
-        Meu Progresso
-      </CustomUnderlineTypography>
+        <p>some content</p>
+        
+      </PageTemplate>
     </>
   );
 }
