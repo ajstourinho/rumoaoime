@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "@mui/material";
-import PageTemplate from './PageTemplate';
+import PageTemplate from '../components/PageTemplate/PageTemplate';
 
 const MeuProgresso = () => {
   const theme = useTheme();
