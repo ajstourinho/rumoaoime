@@ -75,7 +75,7 @@ const Sidebar = () => {
                         : false
                     }
                     onClick={() => navigate(page.navigateTo)}
-                    selected={page.navigateTo === location.pathname}
+                    selected={location.pathname.includes(page.navigateTo)}
                     selectedcolor={page.selectedColor}
                   >
                     <ListItemIcon>{page.icon}</ListItemIcon>
