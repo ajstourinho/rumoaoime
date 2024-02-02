@@ -19,6 +19,7 @@ import SimuladosObjetivos from './pages/simulados/SimuladosObjetivos';
 import SimuladosDiscursivos from './pages/simulados/SimuladosDiscursivos';
 import SobreOIME from './pages/SobreOIME';
 import SobreOSite from './pages/SobreOSite';
+import ProvaObjetiva from './components/ProvaObjetiva/ProvaObjetiva';
 
 function Links() {
 
@@ -38,7 +39,7 @@ function Links() {
       {/* TopBar */}
       <Route path="/sobre-o-ime/" element={<SobreOIME />} />
       <Route path="/sobre-o-site/" element={<SobreOSite />} />
-      
+
       {/* Conteúdos */}
       <Route path="/conteudos/matematica" element={<Matematica />} />
       <Route path="/conteudos/fisica" element={<Fisica />} />
@@ -48,13 +49,23 @@ function Links() {
       <Route path="/conteudos/redacao" element={<Redacao />} />
 
       {/* Provas Anteriores */}
-      <Route path="/provas-anteriores/objetivas" element={<ProvasAnterioresObjetivas />} />
-      <Route path="/provas-anteriores/discursivas" element={<ProvasAnterioresDiscursivas />} />
+      <Route
+        path="/provas-anteriores/objetivas"
+        element={<ProvasAnterioresObjetivas />}
+      />
+      <Route
+        path="/provas-anteriores/objetivas/:yearYearPlusOne"
+        element={<ProvaObjetiva />}
+      />
+
+      <Route
+        path="/provas-anteriores/discursivas"
+        element={<ProvasAnterioresDiscursivas />}
+      />
 
       {/* Simulados */}
       <Route path="/simulados/objetivos" element={<SimuladosObjetivos />} />
       <Route path="/simulados/discursivos" element={<SimuladosDiscursivos />} />
-
 
       {/* Testes */}
       <Route path="/axios" element={<TesteAxios />} />
