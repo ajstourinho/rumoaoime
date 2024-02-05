@@ -14,6 +14,7 @@ const QuestaoObjetivaDisplay = () => {
     borderRadius: "8px", // slightly rounded corners
     padding: "20px",
     backgroundColor: "white",
+    height: "100%"
   };
 
   // Styling for the inner box
@@ -24,6 +25,7 @@ const QuestaoObjetivaDisplay = () => {
     width: "100%",
     maxWidth: "90%", // adjust this as needed
     marginBottom: "20px",
+    height: "100%",
   };
 
   // Button labels

@@ -14,6 +14,7 @@ const PainelProvaObjetiva = () => {
     borderRadius: "8px", // slightly rounded corners
     padding: "20px",
     backgroundColor: "white",
+    height: "100%"
   };
 
   return (
