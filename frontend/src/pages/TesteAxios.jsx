@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from '../axios/axiosInstance';
+import ImageComponent from './ImageComponent';
 
 function TesteAxios() {
     const [data, setData] = useState(null);
@@ -30,11 +31,12 @@ function TesteAxios() {
     };
 
     return (
-        <div>
-            <button onClick={fetchData}>Fetch Data</button>
-            <button onClick={postData}>Post Data</button>
-            {data && <div>{JSON.stringify(data)}</div>}
-        </div>
+      <div>
+        <ImageComponent />
+        <button onClick={fetchData}>Fetch Data</button>
+        <button onClick={postData}>Post Data</button>
+        {data && <div>{JSON.stringify(data)}</div>}
+      </div>
     );
 }
 
