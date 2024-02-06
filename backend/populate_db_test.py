@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-import gridfs
+import gridfs #PyMongo
 import os
 
 # Path to the image you want to store
