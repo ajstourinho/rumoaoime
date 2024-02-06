@@ -1,6 +1,7 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
 from flask_pymongo import PyMongo
+import gridfs
 
 app = Flask(__name__)
 CORS(app)
@@ -52,5 +53,22 @@ def post_data():
     
     return jsonify({'message': 'POST request successful'})
 
+@app.route('/image', methods=['GET'])
+def get_image():
+    filename="image.png"
+    fs = gridfs.GridFS(mongo.db, collection='images')  # Using the custom prefix 'images'
+
+    try:
+        # Use GridFS to get the file with the specified prefix
+        grid_out = fs.find_one({'filename': filename})
+        if not grid_out:
+            return 'File not found', 404
+
+        # Create a response with the image data
+        response = Response(grid_out.read(), mimetype='image/png')  # Adjust the mimetype accordingly
+        return response
+    except Exception as e:
+        return str(e), 500
+    
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
