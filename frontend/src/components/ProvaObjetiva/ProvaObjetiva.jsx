@@ -21,11 +21,11 @@ const ProvaObjetiva = () => {
         )}`}
         underlineColor={theme.palette.rumoaoimeCustomColors.lightGrey}
       >
-        <Grid container spacing={2}>
-          <Grid item xs={9} style={{ height: "calc(100vh - 290px)" }}>
+        <Grid container spacing={3}>
+          <Grid item xs={9} style={{ height: "calc(100vh - 280px)" }}>
             <QuestaoObjetivaDisplay />
           </Grid>
-          <Grid item xs={3} style={{ height: "calc(100vh - 290px)" }}>
+          <Grid item xs={3} style={{ height: "calc(100vh - 280px)" }}>
             <PainelProvaObjetiva />
           </Grid>
         </Grid>
