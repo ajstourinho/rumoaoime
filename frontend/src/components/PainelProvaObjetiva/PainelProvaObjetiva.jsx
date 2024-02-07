@@ -1,32 +1,25 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import { Stack } from "@mui/material";
+import PainelContent from "./PainelContent";
 
 const PainelProvaObjetiva = () => {
   // Styling for the outer box
   const outerBoxStyle = {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "left",
     justifyContent: "center",
-    border: "1px solid lightgrey",
+    border: "2px solid lightgrey",
     borderRadius: "8px", // slightly rounded corners
     padding: "20px",
     backgroundColor: "white",
-    height: "100%"
+    height: "100%",
+    // boxShadow: "0 0 10px 0 lightgrey",
   };
 
   return (
     <Box sx={outerBoxStyle}>
-
-      {/* <Stack direction="row" spacing={2} justifyContent="center">
-        {buttons.map((label) => (
-          <Button key={label} variant="outlined">
-            {label}
-          </Button>
-        ))}
-      </Stack> */}
+      <PainelContent />
     </Box>
   );
 };
