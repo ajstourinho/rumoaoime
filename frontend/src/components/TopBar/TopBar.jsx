@@ -58,7 +58,7 @@ const TopBar = () => {
           }
         />
 
-        <Typography
+        {/* <Typography
           variant="body2"
           style={{
             marginLeft: "30px",
@@ -80,7 +80,7 @@ const TopBar = () => {
           onClick={() => navigate("/sobre-o-site")}
         >
           Sobre o site
-        </Typography>
+        </Typography> */}
 
         {isLoggedIn ? <UserMenu /> : <LogInButton />}
       </Toolbar>
