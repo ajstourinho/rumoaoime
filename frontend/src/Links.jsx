@@ -37,16 +37,16 @@ function Links() {
       />
 
       {/* TopBar */}
-      <Route path="/sobre-o-ime/" element={<SobreOIME />} />
-      <Route path="/sobre-o-site/" element={<SobreOSite />} />
+      {/* <Route path="/sobre-o-ime/" element={<SobreOIME />} />
+      <Route path="/sobre-o-site/" element={<SobreOSite />} /> */}
 
       {/* Conteúdos */}
-      <Route path="/conteudos/matematica" element={<Matematica />} />
+      {/* <Route path="/conteudos/matematica" element={<Matematica />} />
       <Route path="/conteudos/fisica" element={<Fisica />} />
       <Route path="/conteudos/quimica" element={<Quimica />} />
       <Route path="/conteudos/portugues" element={<Portugues />} />
       <Route path="/conteudos/ingles" element={<Ingles />} />
-      <Route path="/conteudos/redacao" element={<Redacao />} />
+      <Route path="/conteudos/redacao" element={<Redacao />} /> */}
 
       {/* Provas Anteriores */}
       <Route
@@ -64,13 +64,13 @@ function Links() {
       />
 
       {/* Simulados */}
-      <Route path="/simulados/objetivos" element={<SimuladosObjetivos />} />
-      <Route path="/simulados/discursivos" element={<SimuladosDiscursivos />} />
+      {/* <Route path="/simulados/objetivos" element={<SimuladosObjetivos />} />
+      <Route path="/simulados/discursivos" element={<SimuladosDiscursivos />} /> */}
 
       {/* Testes */}
-      <Route path="/axios" element={<TesteAxios />} />
+      {/* <Route path="/axios" element={<TesteAxios />} />
       <Route path="/markdown-mathjax" element={<TesteMarkdownMathJax />} />
-      <Route path="/mathjax" element={<TesteMathJax />} />
+      <Route path="/mathjax" element={<TesteMathJax />} /> */}
 
       <Route path="*" element={<LandingPage />} />
     </Routes>
