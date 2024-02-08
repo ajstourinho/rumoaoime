@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { logInUser } from "../../store/slices/userSlice";
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios/axiosInstance';
+import { useTheme } from '@mui/material';
 
 const LogInButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,6 +27,8 @@ const LogInButton = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const theme = useTheme();
 
   const logInMenuStyle = {
     display: 'flex',
@@ -76,7 +79,7 @@ const LogInButton = () => {
         onClick={handleClick}
         variant="contained"
         style={{
-            backgroundColor: "rgb(14, 49, 135)"
+            backgroundColor: theme.palette.rumoaoimeCustomColors.darkBlue
         }}
         disableRipple
       >
