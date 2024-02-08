@@ -1,14 +1,13 @@
 import { createTheme } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
 
 const theme = createTheme({
   // Palette for color scheme
   palette: {
-    // primary: {
-    //   main: '#556cd6',
-    //   light: '#888',
-    //   dark: '#333',
-    //   contrastText: '#fff',
-    // },
+    primary: {
+      main: '#26279B',
+      contrastText: '#fff',
+    },
     // secondary: {
     //   main: '#19857b',
     // },
@@ -34,14 +33,26 @@ const theme = createTheme({
     // },
     rumoaoimeCustomColors: {
       darkBlue: '#26279B',
+      darkerBlue: '#1a1b6e',
       matematica: '#7884CB',
       fisica: '#CB9178',
       quimica: '#B2C8AC',
       portugues: '#D9D67D',
       ingles: '#9D6C9B',
       redacao: '#607880',
-      lightGrey: '#AAA',
+      lightGrey: grey[300],
+      grey: grey[400],
+      darkGrey: grey[500],
+      darkerGrey: grey[600]
     }
+  },
+
+  // You can also include custom properties
+  custom: {
+    sideBarWidth: '230px',
+    topBarHeight: '64px',
+    footerHeight: '20px',
+    footerAndTopBarHeight: '84px'
   },
 
   // // Typography for text styling
