@@ -2,79 +2,51 @@ import React, { useState, useEffect } from "react";
 import { Stack, Button, Grid, Typography, Box } from "@mui/material";
 import TempoDeProva from "../TempoDeProva/TempoDeProva";
 import Divider from "@mui/material/Divider";
-import PainelButton from "../PainelButton/PainelButton";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeQuestionState,
+  selectQuestions,
+  unsetCurrent,
+} from "../../store/slices/questionsSlice";
+import renderQuestions from "./utils/renderQuestions";
+import buttonCustomStyle from "./styles/buttonCustomStyle";
 import { useTheme } from "@mui/material";
 
 const PainelProvaObjetivaContent = () => {
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const dispatch = useDispatch();
+  const questionsState = useSelector(selectQuestions);
+  
   const theme = useTheme();
 
-  const buttonCustomStyle = {
-    seen: {
-      borderColor: theme.palette.rumoaoimeCustomColors.grey,
-      borderWidth: 1,
-      borderStyle: "solid",
-      color: "black",
-      backgroundColor: theme.palette.rumoaoimeCustomColors.lightGrey,
-      "&:hover": {
-        backgroundColor: theme.palette.rumoaoimeCustomColors.grey,
-      },
-    },
-    notSeen: {
-      borderColor: theme.palette.rumoaoimeCustomColors.grey,
-      borderWidth: 1,
-      borderStyle: "solid",
-      color: "black",
-      backgroundColor: "white",
-      "&:hover": {
-        backgroundColor: theme.palette.rumoaoimeCustomColors.lightGrey,
-      },
-    },
-    current: {
-      borderColor: theme.palette.rumoaoimeCustomColors.grey,
-      borderWidth: 1,
-      borderStyle: "solid",
-      color: "white",
-      backgroundColor: theme.palette.rumoaoimeCustomColors.darkGrey,
-      "&:hover": {
-        backgroundColor: theme.palette.rumoaoimeCustomColors.darkerGrey,
-      },
-    },
-    marked: {
-      borderColor: theme.palette.rumoaoimeCustomColors.grey,
-      borderWidth: 1,
-      borderStyle: "solid",
-      color: "white",
-      backgroundColor: theme.palette.rumoaoimeCustomColors.darkBlue,
-      "&:hover": {
-        backgroundColor: theme.palette.rumoaoimeCustomColors.darkerBlue,
-      },
-    },
-  };
-
-  // Initializing blank structure for questionsState
-  const initialQuestionsState = {};
-  const start = 1;
-  const end = 40;
-  for (let i = start; i <= end; i++) {
-    initialQuestionsState[i] = "notSeen";
-  }
-
-  const [questionsState, setQuestionsState] = useState(initialQuestionsState);
-  const [, setState] = React.useState(false);
-
+  // Initialize component unsetting current question (as useState currentQuestion == null)
   useEffect(() => {
-    console.log("rerendrer");
-  }, [questionsState]);
+    dispatch(unsetCurrent());
+  }, [])
 
   const handleQuestionClick = (questionNumber) => {
-    setQuestionsState((prev) => {
-      const newState = prev;
-      newState[questionNumber] = "seen";
-      return newState;
-    });
-    setState((prev) => !prev);
+    // Changing current question
+    if (currentQuestion !== null) {
+      // If this is not the first question clicked
+      dispatch(
+        changeQuestionState({
+          questionNumber: currentQuestion, // previous current question
+          questionState: {
+            status: "seen",
+          },
+        })
+      );
+    }
+    dispatch(
+      changeQuestionState({
+        questionNumber,
+        questionState: {
+          status: "current",
+        },
+      })
+    );
 
-    // Additional logic for when a question is clicked
+    setCurrentQuestion(questionNumber);
   };
 
   const handleSubmit = () => {
@@ -82,40 +54,30 @@ const PainelProvaObjetivaContent = () => {
     console.log("Test submitted.");
   };
 
+  return (
+    <>
+      <Box sx={{ p: 3 }}>
+        <Stack direction="column" gap={1}>
+          <TempoDeProva tempo="00:00" />
 
-  const renderQuestions = (start, end) => {
-    let questions = [];
-    for (let i = start; i <= end; i++) {
-      questions.push(
-        <Grid item xs={2.4} key={i}>
           <Button
-            style={buttonCustomStyle[questionsState[i]]}
-            onClick={() => handleQuestionClick(i)}
+            style={
+              currentQuestion == null
+                ? buttonCustomStyle["current"]
+                : buttonCustomStyle["seen"]
+            }
+            onClick={() => {
+              setCurrentQuestion(null);
+              dispatch(unsetCurrent());
+            }}
             sx={{
-              height: "25px",
-              width: "30px",
+              p: 0.5,
               marginBottom: "10px",
               minWidth: 0,
             }}
           >
-            <Typography variant="caption">{i}</Typography>
+            <Typography variant="subtitle2">Instruções iniciais</Typography>
           </Button>
-        </Grid>
-      );
-    }
-    return questions;
-  };
-  const buttons = Array.from({ length: 10 }, (_, i) => i + 1);
-
-  return (
-    <>
-      <Box sx={{ p: 3 }}>
-        <Stack direction="column" gap={2}>
-          <TempoDeProva tempo="00:00" />
-
-          <PainelButton state="seen">
-            <Typography variant="caption">Instruções iniciais</Typography>
-          </PainelButton>
 
           <Divider />
 
@@ -123,54 +85,46 @@ const PainelProvaObjetivaContent = () => {
             <Typography variant="subtitle2" gutterBottom>
               Matemática:
             </Typography>
-            <Grid container>{renderQuestions(1, 15)}</Grid>
+            <Grid container>
+              {renderQuestions(1, 15, questionsState, handleQuestionClick)}
+            </Grid>
+          </Box>
+
+          <Box>
+            <Typography variant="subtitle2" gutterBottom>
+              Física:
+            </Typography>
+            <Grid container>
+              {renderQuestions(16, 30, questionsState, handleQuestionClick)}
+            </Grid>
+          </Box>
+
+          <Box>
+            <Typography variant="subtitle2" gutterBottom>
+              Química:
+            </Typography>
+            <Grid container>
+              {renderQuestions(31, 40, questionsState, handleQuestionClick)}
+            </Grid>
           </Box>
         </Stack>
 
-        {/* 
-        <Button
-          variant="outlined"
-          sx={{ p: "2px", width: "100%", marginBottom: "4px", minWidth: 0 }}
-        >
-          <Typography variant="caption">Instruções iniciais</Typography>
-        </Button>
-
-        <Divider />
-
-        <Box sx={{ mb: 1, mt: 0.5 }}>
-          <Typography variant="subtitle1" gutterBottom>
-            Matemática:
-          </Typography>
-          <Grid container>{renderQuestions(1, 15)}</Grid>
-        </Box>
-
-        <Divider />
-
-        <Box sx={{ mb: 1, mt: 0.5 }}>
-          <Typography variant="subtitle1" gutterBottom>
-            Física
-          </Typography>
-          <Grid container>{renderQuestions(16, 30)}</Grid>
-        </Box>
-
-        <Divider />
-
-        <Box sx={{ mb: 1, mt: 0.5 }}>
-          <Typography variant="subtitle1" gutterBottom>
-            Química
-          </Typography>
-          <Grid container>{renderQuestions(31, 40)}</Grid>
-        </Box>
-
         <Divider />
 
         <Button
-          variant="contained"
+          style={{
+            backgroundColor: theme.palette.rumoaoimeCustomColors.darkBlue,
+            color: "white",
+          }}
           onClick={handleSubmit}
-          sx={{ p: "2px", width: "100%", marginBottom: "4px", minWidth: 0, mt: 1 }}
+          sx={{
+            p: 0.5,
+            width: "100%",
+            mt: 2,
+          }}
         >
           <Typography variant="caption">FINALIZAR</Typography>
-        </Button> */}
+        </Button>
       </Box>
     </>
   );
