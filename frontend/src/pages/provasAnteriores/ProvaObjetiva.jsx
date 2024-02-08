@@ -23,7 +23,7 @@ const ProvaObjetiva = () => {
         sideComponent={<PainelProvaObjetiva />}
       >
 
-        <Grid container sx={{ p: 3, height: "100%" }}>
+        <Grid container sx={{ p: 3, height: "90%" }}>
           <Grid item container sx={{ height: "100%"}}>
             <QuestaoObjetivaDisplay />
           </Grid>
