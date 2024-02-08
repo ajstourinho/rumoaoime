@@ -9,7 +9,7 @@ const ProvasAnterioresDiscursivas = () => {
     <>
       <CustomUnderlineTypography
         variant="h4"
-        underlineColor={theme.palette.rumoaoimeCustomColors.lightGrey}
+        underlineColor={theme.palette.rumoaoimeCustomColors.darkGrey}
       >
         Provas Anteriores - Discursivas
       </CustomUnderlineTypography>
