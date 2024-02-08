@@ -44,7 +44,7 @@ const QuestaoObjetivaDisplay = () => {
     <>
       <Card
         sx={{
-          height: "100%",
+          height: "500px",
           width: "100%",
           borderColor: "lightgrey",
           borderWidth: 1,
