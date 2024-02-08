@@ -5,15 +5,18 @@ import SideBar from './components/SideBar/SideBar';
 import Footer from './components/Footer/Footer';
 
 import Links from "./Links";
+import { useTheme } from '@mui/material';
+
 
 function App() {
+  const theme = useTheme()
 
   const contentGridStyle = {
     position: 'fixed',
-    marginLeft: "242px",
-    marginTop: "64px",
-    width: 'calc(100vw - 242px)', // Adjust the width as needed
-    height: 'calc(100vh - 106px)', // Calculate the remaining height
+    marginLeft: theme.custom.sideBarWidth,
+    marginTop: theme.custom.topBarHeight,
+    width: `calc(100vw - ${theme.custom.sideBarWidth})`, // Adjust the width as needed
+    height: `calc(100vh - ${theme.custom.footerAndTopBarHeight})`, // Calculate the remaining height
     overflowY: 'auto', // Enable vertical scrolling if necessary
     padding: "30px"
   };
@@ -21,12 +24,13 @@ function App() {
   return (
     <>
       <Grid container>
+        
         <Grid item xs={12}>
           <TopBar />
         </Grid>
 
         <Grid container>
-          <Grid item sx={{mt: "64px", width: "240px"}}>
+          <Grid item sx={{mt: theme.custom.topBarHeight, width: theme.custom.sideBarWidth}}>
             <SideBar />
           </Grid>
 
