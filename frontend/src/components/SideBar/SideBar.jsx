@@ -15,6 +15,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import sections from './sections';
 
 import { styled } from "@mui/material/styles";
+import { useTheme } from '@mui/material';
 
 const ListItem = styled(MuiListItem)(({ selectedcolor }) => ({
   "&.Mui-selected, &.Mui-selected:hover": {
@@ -27,17 +28,19 @@ const ListItem = styled(MuiListItem)(({ selectedcolor }) => ({
   },
 }));
 
-const sidebarStyle = {
-  position: 'fixed',
-  backgroundColor: 'white',
-  width: '240px', // Adjust the width as needed
-  height: 'calc(100vh - 106px)', // Calculate the remaining height
-  borderRight: '2px solid #ccc',
-  overflowY: 'auto', // Enable vertical scrolling if necessary
-  color: "grey"
-};
-
 const Sidebar = () => {
+  const theme = useTheme();
+
+  const sidebarStyle = {
+    position: "fixed",
+    backgroundColor: "white",
+    width: theme.custom.sideBarWidth, // Adjust the width as needed
+    borderRight: "2px solid #ccc",
+    height: `calc(100vh - ${theme.custom.footerAndTopBarHeight})`, // Calculate the remaining height
+    overflowY: "auto", // Enable vertical scrolling if necessary
+    color: theme.palette.rumoaoimeCustomColors.darkerGrey,
+  };
+
   const { isLoggedIn } = useSelector(selectUser);
   
   const navigate = useNavigate();
