@@ -14,6 +14,7 @@ const TempoDeProva = ({ tempo }) => {
         <Typography variant="subtitle2" sx={{mb: 1}}>Tempo de prova:</Typography>
 
         <Grid container>
+          <Grid item xs={1} />
           <Grid
             item
             xs={8}
@@ -24,7 +25,7 @@ const TempoDeProva = ({ tempo }) => {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h5" color="grey">
+            <Typography variant="h4" color="grey">
               {isVisible ? tempo : "- - : - -"}
             </Typography>
             <Typography variant="caption" sx={{ ml: 0.5 }} color="grey">
