@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "@mui/material";
 import PageTemplate from '../components/PageTemplate/PageTemplate';
+import Grid from "@mui/material/Grid";
 
 const MeuProgresso = () => {
   const theme = useTheme();
@@ -11,8 +12,8 @@ const MeuProgresso = () => {
         pageTitle="Meu Progresso"
         underlineColor={theme.palette.rumoaoimeCustomColors.darkBlue}
       >
-        <p>some content</p>
-        
+
+
       </PageTemplate>
     </>
   );
