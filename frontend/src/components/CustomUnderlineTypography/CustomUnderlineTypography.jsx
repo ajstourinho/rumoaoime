@@ -7,7 +7,6 @@ const CustomUnderlineTypography = ({ children, underlineColor, variant }) => {
       sx={{
         display: "inline-block",
         position: "relative",
-        mb: 5
       }}
     >
       <Typography variant={variant}>{children}</Typography>
